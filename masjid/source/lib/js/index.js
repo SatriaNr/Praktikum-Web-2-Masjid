@@ -169,6 +169,28 @@ document.getElementById("btn-toggle").addEventListener("click", () => {
         }  },
     ]
     });
+      
+    // Edit data petugas
+     $(document).on("click",".btn-edit-petugas",function(){
+
+        var posisiBaris = $(this).parents('tr');
+        if (posisiBaris .hasClass('child')) {
+            posisiBaris = posisiBaris .prev();
+        }
+        var table = $('#table-petugas').DataTable();
+        var data = table.row( posisiBaris ).data();
+        $('#txtnik').val(data.nik);
+        $('#txtnik').attr("readonly",true);
+        $('#txtnama').val(data.nama);
+        $('#txttempat').val(data.tempat_lahir);
+        $('#txttgl').val(data.tanggal_lahir);
+        $('#txttelp').val(data.telp);
+        $('#txtalamat').val(data.alamat);
+        $('#btnPetugas').text('Ubah');
+        $('#petugasModal').modal('show');
+        $('#titlePetugasModal').text('Ubah Data');
+
+    });
 
     // Membuat Kode hapus data petugas 
     $(document).on("click",".btn-hapus-petugas",function(){ 
